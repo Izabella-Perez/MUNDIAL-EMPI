@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Álbum Mundial 2026</title>
+
+<style>
+/* Reset mejorado para móviles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Quita el recuadro gris al tocar */
+}
+
+body {
+    background: #f4f4f4;
+    padding: 15px;
+    touch-action: manipulation;
+}
+
+h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #0d4d92;
+}
+
+h2 {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #0066cc;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    min-width: 80px; /* Botones más pequeños pero tocables */
+    height: 45px;
+}
+
+#contenedor-estampas {
+    display: grid;
+    /* Ajuste para que quepan 2 o 3 columnas en un móvil */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.carta {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.numero {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #0066cc;
+}
+
+.completada {
+    background: #d4edda;
+    border: 2px solid #28a745;
+}
+
+/* Hacer el checkbox más grande para facilitar el toque */
+label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 5px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+</style>
+</head>
+<body>
+
+<h1>⚽ Álbum 2026 ⚽</h1>
+<h2>¡Ordena tus cartitas! ❤</h2>
+<div class="botones" id="botones"></div>
+<div id="contenedor-estampas"></div>
+
+<script>
+// ... (Tu lógica de JavaScript se mantiene igual, no necesita cambios)
+const album = {
+    "FWC": generarEstampas("FWC", 19),
+    "MEX": generarEstampas("MEX", 20),
+    "USA": generarEstampas("USA", 20),
+    "CAN": generarEstampas("CAN", 20),
+    "BRA": generarEstampas("BRA", 20),
+    "ARG": generarEstampas("ARG", 20),
+    "FRA": generarEstampas("FRA", 20),
+    "ESP": generarEstampas("ESP", 20),
+    "GER": generarEstampas("GER", 20),
+    "ENG": generarEstampas("ENG", 20),
+    "POR": generarEstampas("POR", 20),
+    "NED": generarEstampas("NED", 20),
+    "BEL": generarEstampas("BEL", 20),
+    "ITA": generarEstampas("ITA", 20),
+    "URU": generarEstampas("URU", 20),
+    "CRO": generarEstampas("CRO", 20),
+    "MAR": generarEstampas("MAR", 20),
+    "JPN": generarEstampas("JPN", 20),
+    "KOR": generarEstampas("KOR", 20),
+    "RSA": generarEstampas("RSA", 20),
+    "SUI": generarEstampas("SUI", 20),
+    "POL": generarEstampas("POL", 20),
+    "DEN": generarEstampas("DEN", 20),
+    "SEN": generarEstampas("SEN", 20),
+    "CMR": generarEstampas("CMR", 20),
+    "GHA": generarEstampas("GHA", 20),
+    "NGA": generarEstampas("NGA", 20),
+    "AUS": generarEstampas("AUS", 20),
+    "IRN": generarEstampas("IRN", 20),
+    "QAT": generarEstampas("QAT", 20),
+    "ECU": generarEstampas("ECU", 20),
+    "COL": generarEstampas("COL", 20),
+    "CHI": generarEstampas("CHI", 20),
+    "PER": generarEstampas("PER", 20),
+    "PAR": generarEstampas("PAR", 20),
+    "BOL": generarEstampas("BOL", 20),
+    "VEN": generarEstampas("VEN", 20),
+    "HON": generarEstampas("HON", 20),
+    "CRC": generarEstampas("CRC", 20),
+    "SLV": generarEstampas("SLV", 20),
+    "PAN": generarEstampas("PAN", 20),
+    "JAM": generarEstampas("JAM", 20),
+    "ALG": generarEstampas("ALG", 20),
+    "TUN": generarEstampas("TUN", 20),
+    "EGY": generarEstampas("EGY", 20),
+    "AUT": generarEstampas("AUT", 20),
+    "SWE": generarEstampas("SWE", 20),
+    "NOR": generarEstampas("NOR", 20),
+    "COCACOLA": generarEstampas("COCA", 14)
+};
+
+function generarEstampas(prefijo, cantidad){
+    let lista = [];
+    for(let i = 1; i <= cantidad; i++){
+        lista.push(prefijo + i);
+    }
+    return lista;
+}
+
+const botones = document.getElementById("botones");
+for(let equipo in album){
+    botones.innerHTML += `<button onclick="mostrarEquipo('${equipo}')">${equipo}</button>`;
+}
+
+function mostrarEquipo(equipo){
+    const contenedor = document.getElementById("contenedor-estampas");
+    contenedor.innerHTML = "";
+    album[equipo].forEach(numero => {
+        const guardado = localStorage.getItem(numero) === "true";
+        contenedor.innerHTML += `
+            <div class="carta ${guardado ? 'completada' : ''}">
+                <div class="numero">${numero}</div>
+                <label>
+                    <input type="checkbox" ${guardado ? 'checked' : ''} onchange="guardar(this, '${numero}')">
+                    Obtenida
+                </label>
+            </div>
+        `;
+    });
+}
+
+function guardar(checkbox, numero){
+    localStorage.setItem(numero, checkbox.checked);
+    const carta = checkbox.closest('.carta');
+    if(checkbox.checked){
+        carta.classList.add('completada');
+    }else{
+        carta.classList.remove('completada');
+    }
+}
+</script>
+</body>
+</html>
+
+
+
+
+
